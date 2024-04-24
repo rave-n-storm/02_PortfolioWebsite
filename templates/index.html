@@ -1,0 +1,143 @@
+{% include "header.html" %}
+
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">
+                    Németh Gáspár
+                </span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ url_for('static', filename='assets/img/profile.jpg') }}" alt="profile picture" />
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills & Tools</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#motivation">Motivation</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Gáspár
+                        <span class="text-primary">Németh</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        H-1138 Budapest, Placeholder street x/B <br>
+                        +36 20 xxx xxxx <br>
+                        <a href="mailto:gaspar.nemeth@gmail.com">gaspar.nemeth@gmail.com</a>
+                    </div>
+                    <p class="lead mb-5">This website has been made with the use of Python, Flask and Bootstrap as part of my developer portfolio.<br>
+                    After 10+ years in the film industry I want something more stable and reliable, so I've started my journey in programming.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://github.com/rave-n-storm"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.imdb.com/name/nm7591471/"><i class="fab fa-imdb"></i></a>
+                        <a class="social-icon" href="https://www.facebook.com/gaspar.nemeth"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+
+            <!-- Portfolio-->
+            <section class="resume-section" id="portfolio">
+                <div class="resume-section-content">
+                    <h2 class="mb-5 text-primary">Portfolio</h2>
+
+                    {% for project in data: %}
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{ project.name.split("_")[0] }} {{ project.name.split("_")[1] }}</h3>
+                            <p>{{ project.description }}</p>
+                            <a class="social-icon" href="{{ project.html_url }}"><i class="fab fa-github"></i></a>
+                            <a href="{{ project.html_url }}"> See on GitHub</a>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <span class="text-primary">Created: {{ project.created_at.split('T')[0] }}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </section>
+            <hr class="m-0" />
+
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5 text-primary">Education</h2>
+
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Metropolitan University (formerly known as BKF)</h3>
+                            <div class="subheading mb-3">MA - Motion Picture Artist</div>
+                            <div>Budapest, Hungary</div>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">September 2013 - May 2015</span></div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Eötvös Loránd Tudományegyetem</h3>
+                            <div class="subheading mb-3">BA - Liberal Arts with Specialisation in Film Theory and Film History</div>
+                            <div>Budapest, Hungary</div>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">September 2009 - May 2012</span></div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Révai Miklós Gimnázium és Kollégium</h3>
+                            <div class="subheading mb-3">High School, class specalisation in Mathematics and German language</div>
+                            <div>Győr, Hungary</div>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">September 2005 - May 2009</span></div>
+                    </div>
+
+                </div>
+            </section>
+            <hr class="m-0" />
+
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5 text-primary">Skills & Tools </h2>
+                    <div class="subheading mb-3">Programming Languages & Tools used for this website</div>
+                    <ul class="list-inline dev-icons">
+                        <li class="list-inline-item"><i class="fab fa-python"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-bootstrap"></i></li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+
+            <!-- Motivation -->
+            <section class="resume-section" id="motivation">
+                <div class="resume-section-content">
+                    <h2 class="mb-5 text-primary">Motivation</h2>
+                    <p>I started working in the film industry during my MA studies in January 2014. In the following 10+ I took part in several productions of different size as a 2nd Assistant Director.</p>
+                    <p class="mb-0">However, the instability and sinking number of jobs, especially in Hungary has made me turn towards another field, on that can provide a safe and reliable employment.<br>
+                    I started learning Python in February 2024 through a course on Udemy and found the process and the knowledge acquired interesting, challenging and all-round pleasant.<br>
+                    After this course I plan to take a look into other aspects of coding, other languages and applications, and in the meantime look for junior positions to start my new career.</p>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{{ url_for('static', filename='assets/js/scripts.js') }}"></script>
+    </body>
+</html>
